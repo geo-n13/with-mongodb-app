@@ -1,0 +1,193 @@
+openapi: 3.0.0
+info:
+  title: Movie API
+  description: API to manage movies and comments.
+  version: "1.0.0"
+servers:
+  - url: "http://localhost:3000"
+    description: Local server
+paths:
+  /api/movies:
+    get:
+      summary: Get a list of all movies
+      responses:
+        "200":
+          description: A JSON array of movies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Movie"
+    post:
+      summary: Add a new movie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Movie"
+      responses:
+        "201":
+          description: Movie created
+  /api/movie/{idMovie}:
+    get:
+      summary: Get a movie by ID
+      parameters:
+        - in: path
+          name: idMovie
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Details of a movie
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Movie"
+    put:
+      summary: Update a movie by ID
+      parameters:
+        - in: path
+          name: idMovie
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Movie"
+      responses:
+        "200":
+          description: Movie updated
+    delete:
+      summary: Delete a movie by ID
+      parameters:
+        - in: path
+          name: idMovie
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Movie deleted
+  /api/movie/comments:
+    get:
+      summary: Get a list of all comments for a movie
+      parameters:
+        - in: query
+          name: movieId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A JSON array of comments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+    post:
+      summary: Add a new comment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+      responses:
+        "201":
+          description: Comment created
+  /api/movie/comment/{idComment}:
+    get:
+      summary: Get a comment by ID
+      parameters:
+        - in: path
+          name: idComment
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Details of a comment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+    put:
+      summary: Update a comment by ID
+      parameters:
+        - in: path
+          name: idComment
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+      responses:
+        "200":
+          description: Comment updated
+    delete:
+      summary: Delete a comment by ID
+      parameters:
+        - in: path
+          name: idComment
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Comment deleted
+components:
+  schemas:
+    Movie:
+      type: object
+      required:
+        - title
+        - genres
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        genres:
+          type: array
+          items:
+            type: string
+        runtime:
+          type: integer
+        cast:
+          type: array
+          items:
+            type: string
+        plot:
+          type: string
+    Comment:
+      type: object
+      required:
+        - name
+        - email
+        - text
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        movie_id:
+          type: string
+        text:
+          type: string
+        date:
+          type: string
+          format: date-time

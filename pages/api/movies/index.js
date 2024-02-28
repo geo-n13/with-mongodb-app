@@ -1,4 +1,5 @@
 // pages/api/movies/index.js
+
 import clientPromise from "../../../lib/mongodb";
 
 export default async function handler(req, res) {
@@ -23,13 +24,14 @@ export default async function handler(req, res) {
             }
 
             // Insertion du nouveau film dans la collection
-            const movie = { 
-                title, 
-                genres, 
-                runtime, 
-                cast, 
-                plot, 
-                created_at: new Date() };
+            const movie = {
+                title,
+                genres,
+                runtime,
+                cast,
+                plot,
+                created_at: new Date()
+            };
             const response = await db.collection("movies").insertOne(movie);
 
             // Vérifier si l'insertion a réussi
