@@ -33,6 +33,10 @@ const Home = ({
             <main style={styles.main}>
                 <h1 style={styles.title}>Bienvenue sur MFlix</h1>
 
+                <p style={styles.description}>
+                    Pour commencer, vous pouvez vous inscrire ou vous connecter.
+                </p>
+
                 <p style={{
                     ...styles.connection,
                     backgroundColor: isConnected ? 'green' : 'red',
@@ -67,6 +71,10 @@ const styles = {
         fontSize: '4rem',
         textAlign: 'center' as const,
         fontFamily: 'Arial, sans-serif',
+    },
+    description: {
+        textAlign: 'center' as const,
+        fontSize: '2rem',
     },
     connection: {
         position: 'fixed' as const,
