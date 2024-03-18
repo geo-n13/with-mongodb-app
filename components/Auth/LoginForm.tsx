@@ -23,7 +23,7 @@ const LoginForm = () => {
                 />
             </div>
             <div style={styles.field}>
-                <label htmlFor="password" style={styles.label}>Password</label>
+                <label htmlFor="password" style={styles.label}>Mot de passe</label>
                 <input
                     type="password"
                     id="password"
@@ -32,7 +32,7 @@ const LoginForm = () => {
                     style={styles.input}
                 />
             </div>
-            <button type="submit" style={styles.button}>Login</button>
+            <button type="submit" style={styles.button}>Se connecter</button>
         </form>
     );
 };

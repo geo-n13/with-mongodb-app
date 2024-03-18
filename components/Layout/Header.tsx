@@ -1,11 +1,26 @@
+import Link from 'next/link';
+import Image from 'next/image';
+
 const Header = () => {
     return (
         <header style={styles.header}>
             <div style={styles.container}>
-                <span style={styles.logo}>MFlix</span>
+                <Link href="/" passHref>
+                    <Image
+                        src="/logo.png"
+                        alt="MFLIX" 
+                        width={125} 
+                        height={125}
+                    />
+                </Link>
+
                 <div style={styles.menu}>
-                    <button style={styles.button}>Se connecter</button>
-                    <button style={styles.button}>S'inscrire</button>
+                    <Link href="/login" passHref>
+                        <button style={styles.button}>Se connecter</button>
+                    </Link>
+                    <Link href="/register" passHref>
+                        <button style={styles.button}>S'inscrire</button>
+                    </Link>
                 </div>
             </div>
         </header>
@@ -16,7 +31,6 @@ const styles = {
     header: {
         backgroundColor: '#333',
         color: 'white',
-        padding: '20px 0',
         width: '100%',
         position: 'fixed',
         top: 0,
@@ -31,9 +45,7 @@ const styles = {
         padding: '0 20px',
     },
     logo: {
-        fontWeight: 'bold',
-        fontSize: '1.5rem',
-        fontFamily: 'Arial, sans-serif',
+        /** Insert styles */
     },
     menu: {
         display: 'flex',

@@ -81,12 +81,11 @@ const styles = {
         bottom: '20px',
         right: '20px',
         backgroundColor: '#ccc',
-        fonFamily: 'Arial, sans-serif',
-        fontWeight: 'bold' as const,
         color: 'white',
         padding: '10px 20px',
         borderRadius: '10px',
         boxShadow: '0 2px 4px rgba(0,0,0,0.5)',
+        fontFamily: 'Arial, sans-serif',
         zIndex: 1000,
     },
 };

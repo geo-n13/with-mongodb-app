@@ -23,7 +23,7 @@ const RegisterForm = () => {
                 />
             </div>
             <div style={styles.field}>
-                <label htmlFor="password" style={styles.label}>Password</label>
+                <label htmlFor="password" style={styles.label}>Mot de passe</label>
                 <input
                     type="password"
                     id="password"
@@ -32,7 +32,7 @@ const RegisterForm = () => {
                     style={styles.input}
                 />
             </div>
-            <button type="submit" style={styles.button}>Register</button>
+            <button type="submit" style={styles.button}>S'inscrire</button>
         </form>
     );
 };
