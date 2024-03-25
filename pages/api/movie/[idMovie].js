@@ -1,10 +1,17 @@
-// pages/api/movies/[idMovie].js
+import auth from '../../../middleware/auth';
 import clientPromise from "../../../lib/mongodb";
 import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
-    const { idMovie } = req.query;
+    if (['PUT', 'DELETE'].includes(req.method)) {
+        // Authentifiez avant d'effectuer les actions PUT et DELETE.
+        return auth(req, res, () => methodHandler(req, res));
+    }
+    return methodHandler(req, res);
+}
 
+async function methodHandler(req, res) {
+    const { idMovie } = req.query;
     const client = await clientPromise;
     const db = client.db("sample_mflix");
 
@@ -41,7 +48,7 @@ export default async function handler(req, res) {
             }
             break;
         default:
-            res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
+            res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
             res.status(405).end(`Method ${req.method} Not Allowed`);
     }
 }
